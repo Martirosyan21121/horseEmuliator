@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean name="horseService" class="com.epam.service.HorseServiceimpl">
+        <constructor-arg name="horses" ref="horses"/>
+    </bean>
+
+    <bean name="raceService" class="com.epam.service.RaceServiceImpl">
+        <property name="horseService" ref="horseService"/>
+    </bean>
+
+    <util:list id="horses" value-type="com.epam.beans.Horse">
+        <ref bean="horse1"/>
+        <ref bean="horse2"/>
+        <ref bean="horse3"/>
+        <ref bean="horse4"/>
+    </util:list>
+    <bean name="horse1" class="com.epam.beans.Horse">
+        <constructor-arg name="bread" value="arabakan"/>
+        <constructor-arg name="raceNumber" value="30"/>
+        <constructor-arg name="riderName" value="Curry"/>
+    </bean>
+
+    <bean name="horse2" class="com.epam.beans.Horse">
+        <constructor-arg name="bread" value="pony"/>
+        <constructor-arg name="raceNumber" value="10"/>
+        <constructor-arg name="riderName" value="James"/>
+    </bean>
+
+    <bean name="horse3" class="com.epam.beans.Horse">
+        <constructor-arg name="bread" value="pony"/>
+        <constructor-arg name="raceNumber" value="25"/>
+        <constructor-arg name="riderName" value="Harden"/>
+    </bean>
+
+    <bean name="horse4" class="com.epam.beans.Horse">
+        <constructor-arg name="bread" value="pony"/>
+        <constructor-arg name="raceNumber" value="60"/>
+        <constructor-arg name="riderName" value="Durant"/>
+    </bean>
+</beans>
